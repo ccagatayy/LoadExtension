@@ -20,8 +20,8 @@ Version : 2.0
 func loadJSON(filename: String) -> ExampleClass? {
     if let dictionary = Dictionary<String, AnyObject>.loadPlistFromProject(filename) {
         let stringValue = (dictionary["name"] as NSString)
-        let intergerValue = (dictionary["score"] as NSString).integerValue
-        let doubleValue = (dictionary["maxDurationTransition"] as NSString).doubleValue
+        let intergerValue = (dictionary["score"] as NSNumber).integerValue
+        let doubleValue = (dictionary["maxDurationTransition"] as NSNumber).doubleValue
         
         return ExampleClass(stringValue: stringValue, intergerValue: intergerValue, doubleValue: doubleValue)
     }
