@@ -7,7 +7,7 @@ By Yannickstephan.com
 
 Version : 2.0
 
-**Begin** Import LoadExtensionDictionary in your project
+**Begin** Import LoadExtensionDictionary.swift in your project
 
 **Create function for import data :**
 =====
@@ -33,7 +33,7 @@ func loadJSON(filename: String) -> ExampleClass? {
   
   :param: Name File Plist
 */
-func loadJSON(filename: String) -> ExampleClass? {
+func loadPlist(filename: String) -> ExampleClass? {
     if let dictionary = Dictionary<String, AnyObject>.loadPlistFromProject(filename) {
         let stringValue = (dictionary["name"] as NSString)
         let intergerValue = (dictionary["score"] as NSString).integerValue
