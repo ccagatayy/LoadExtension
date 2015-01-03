@@ -1,7 +1,7 @@
 LoadExtensionDictionary [![](http://img.shields.io/badge/OS%20X-10.10%2B-lightgrey.svg)]() [![](http://img.shields.io/badge/iOS-8.0%2B-lightgrey.svg)]()
 =============
 
-Simple Extension for load any files (Plist, JSON) Into Dictionary type Dictionary<String, AnyObject>?
+**Simple Extension for load any files (Plist, JSON) Into Dictionary type Dictionary<String, AnyObject>?**
 
 By Yannickstephan.com
 
