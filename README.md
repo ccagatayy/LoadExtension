@@ -8,7 +8,7 @@ By Yannickstephan.com
 Version : 2.0
 
 **Begin** Import LoadExtensionDictionary.swift in your project
-
+=====
 **Create function for import data :**
 =====
 ```swift
