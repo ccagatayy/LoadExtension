@@ -47,7 +47,7 @@ extension Dictionary {
     */
     static func loadPlistFromProject(filename: String) -> Dictionary<String, AnyObject>? {
 
-        if let path = NSBundle.mainBundle().pathForResource("GameParam", ofType: "plist") {
+        if let path = NSBundle.mainBundle().pathForResource(filename, ofType: "plist") {
             return NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject>
         }
         println("Could not find file: \(filename)")
