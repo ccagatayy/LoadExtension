@@ -1,46 +1,59 @@
 LoadExtensionDictionary [![](http://img.shields.io/badge/OS%20X-10.10%2B-lightgrey.svg)]() [![](http://img.shields.io/badge/iOS-8.0%2B-lightgrey.svg)]()
-=============
+By Yannickstephan.com
+
 
 **Simple Extension for load any files (Plist, JSON) Into Dictionary type Dictionary<String, AnyObject>?**
 
-By Yannickstephan.com
 
-Version : 2.0
 
 **Begin** Import LoadExtensionDictionary.swift in your project
-=====
-**Create function for import data :**
-=====
-```swift
-/**
-  Example function for load Files JSON
-  
-  :param: Name File JSON
-*/
-func loadJSON(filename: String) -> ExampleClass? {
-    if let dictionary = Dictionary<String, AnyObject>.loadPlistFromProject(filename) {
-        let stringValue = (dictionary["name"] as NSString)
-        let intergerValue = (dictionary["score"] as NSNumber).integerValue
-        let doubleValue = (dictionary["maxDurationTransition"] as NSNumber).doubleValue
-        
-        return ExampleClass(stringValue: stringValue, intergerValue: intergerValue, doubleValue: doubleValue)
-    }
-    return nil
-}
 
-/**
-  Example function for load Files Plist
-  
-  :param: Name File Plist
-*/
-func loadPlist(filename: String) -> ExampleClass? {
-    if let dictionary = Dictionary<String, AnyObject>.loadPlistFromProject(filename) {
-        let stringValue = (dictionary["name"] as NSString)
-        let intergerValue = (dictionary["score"] as NSString).integerValue
-        let doubleValue = (dictionary["maxDurationTransition"] as NSString).doubleValue
+```swift
+extension Dictionary {
+    
+    /**
+        Loads a JSON file from the app bundle into a new dictionary
+    
+        :param: File name
+        :return: Dictionary<String, AnyObject>?
+    */
+    static func loadJSONFromProject(filename: String) -> Dictionary<String, AnyObject>? {
+        if let path = NSBundle.mainBundle().pathForResource(filename, ofType: "json") {
+            
+            var error: NSError?
+            let data: NSData? = NSData(contentsOfFile: path, options: NSDataReadingOptions(), error: &error)
+            if let data = data {
+                
+                let dictionary: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(), error: &error)
+                if let dictionary = dictionary as? Dictionary<String, AnyObject> {
+                    return dictionary
+                } else {
+                    println("File '\(filename)' is not valid JSON: \(error!)")
+                    return nil
+                }
+            } else {
+                println("Could not load file: \(filename), error: \(error!)")
+                return nil
+            }
+        }
+        println("Could not find file: \(filename)")
+        return nil
         
-        return ExampleClass(stringValue: stringValue, intergerValue: intergerValue, doubleValue: doubleValue)
     }
-    return nil
+    
+    /**
+        Load a Plist file from the app bundle into a new dictionary
+    
+        :param: File name
+        :return: Dictionary<String, AnyObject>?
+    */
+    static func loadPlistFromProject(filename: String) -> Dictionary<String, AnyObject>? {
+
+        if let path = NSBundle.mainBundle().pathForResource(filename, ofType: "plist") {
+            return NSDictionary(contentsOfFile: path) as? Dictionary<String, AnyObject>
+        }
+        println("Could not find file: \(filename)")
+        return nil
+    }
 }
 ```
