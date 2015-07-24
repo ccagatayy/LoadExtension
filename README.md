@@ -1,10 +1,10 @@
-#LoadExtensionDictionary#
+#Extension load (Plist, JSON) Into Dictionary#
 [![](http://img.shields.io/badge/OS%20X-10.10%2B-lightgrey.svg)]() 
 [![](http://img.shields.io/badge/iOS-8.0%2B-lightgrey.svg)]()
 ####By Yannickstephan.com####
 
 
-Simple Extension for load any files (Plist, JSON) Into Dictionary type Dictionary<String, AnyObject>?
+
 
 ###Begin Import LoadExtensionDictionary.swift in your project###
 
