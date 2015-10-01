@@ -30,7 +30,7 @@ extension Dictionary {
             throw EHError.Nil("[EasyHelper][loadJSONFromBundle][->pathForResource] The file could not be located\nFile : '\(filename).json'")
         }
 
-        guard let data = try? NSData(contentsOfFile: path, options:.DataReadingMappedIfSafe)   else {
+        guard let data = try? NSData(contentsOfFile: path, options:.DataReadingUncached)   else {
            throw EHError.NSData("[EasyHelper][loadJSONFromBundle][->NSData] The absolute path of the file not find\nFile : '\(filename)'")
         }
 
@@ -86,7 +86,7 @@ public extension Array {
             throw EHError.Nil("[EasyHelper][loadJSONFromBundle][->pathForResource] The file could not be located\nFile : '\(filename).json'")
         }
         
-        guard let data = try? NSData(contentsOfFile: path, options:.DataReadingMappedIfSafe)   else {
+        guard let data = try? NSData(contentsOfFile: path, options:.DataReadingUncached)   else {
             throw EHError.NSData("[EasyHelper][loadJSONFromBundle][->NSData] The absolute path of the file not find\nFile : '\(filename)'")
         }
         
