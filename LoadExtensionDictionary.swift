@@ -30,11 +30,11 @@ extension Dictionary {
             throw EHError.Nil("[EasyHelper][loadJSONFromBundle][->pathForResource] The file could not be located\nFile : '\(filename).json'")
         }
 
-        guard let data = try? NSData(contentsOfFile: path, options:NSDataReadingOptions())   else {
+        guard let data = try? NSData(contentsOfFile: path, options:.DataReadingMappedIfSafe)   else {
            throw EHError.NSData("[EasyHelper][loadJSONFromBundle][->NSData] The absolute path of the file not find\nFile : '\(filename)'")
         }
 
-        guard let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as? Dictionary<String, AnyObject> else {
+        guard let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? Dictionary<String, AnyObject> else {
             throw EHError.JSON("[EasyHelper][loadJSONFromBundle][->NSJSONSerialization]Error.InvalidJSON Level file '\(filename)' is not valid JSON")
         }
         
@@ -78,7 +78,7 @@ public extension Array {
     
     - throws: EHError : PathForResource / NSData / JSON
     
-    - returns: [String : AnyObject] 
+    - returns: [String : AnyObject]
     */
     static func loadJSONFromBundle(filename: String, nameJson:String) throws ->  [String : AnyObject] {
         
@@ -86,15 +86,13 @@ public extension Array {
             throw EHError.Nil("[EasyHelper][loadJSONFromBundle][->pathForResource] The file could not be located\nFile : '\(filename).json'")
         }
         
-        guard let data = try? NSData(contentsOfFile: path, options:NSDataReadingOptions())   else {
+        guard let data = try? NSData(contentsOfFile: path, options:.DataReadingMappedIfSafe)   else {
             throw EHError.NSData("[EasyHelper][loadJSONFromBundle][->NSData] The absolute path of the file not find\nFile : '\(filename)'")
         }
         
         guard let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? [String : AnyObject] else {
             throw EHError.JSON("[EasyHelper][loadJSONFromBundle][->NSJSONSerialization] Invalid JSON\n nameJson '\(nameJson)'\nFile '\(filename)'")
         }
-        
-
         
         return jsonDict
         
@@ -113,7 +111,7 @@ public extension Array {
     
     - throws: EHError : Nil
     
-    - returns: [String : AnyObject] 
+    - returns: [String : AnyObject]
     */
     static func loadPlistFromBundle(filename: String) throws -> [String : AnyObject] {
         
@@ -126,5 +124,4 @@ public extension Array {
         
         return plistDict
     }
-
 }
