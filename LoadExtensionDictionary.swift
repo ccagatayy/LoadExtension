@@ -78,7 +78,7 @@ public extension Array {
     
     - throws: EHError : PathForResource / NSData / JSON
     
-    - returns: Dictionary<String, AnyObject>
+    - returns: [String : AnyObject] 
     */
     static func loadJSONFromBundle(filename: String, nameJson:String) throws ->  [String : AnyObject] {
         
@@ -113,7 +113,7 @@ public extension Array {
     
     - throws: EHError : Nil
     
-    - returns: Dictionary<String, AnyObject>
+    - returns: [String : AnyObject] 
     */
     static func loadPlistFromBundle(filename: String) throws -> [String : AnyObject] {
         
