@@ -7,6 +7,11 @@
 //
 import Foundation
 
+enum EHError: ErrorType {
+    case Nil(String)
+    case NSData(String)
+    case JSON(String) 
+}
 
 extension Dictionary {
     /**
