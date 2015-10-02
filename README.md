@@ -7,12 +7,13 @@
 
 
 ###Begin Import LoadExtensionDictionary.swift in your project###
+
+```swift
 enum EHError: ErrorType {
     case Nil(String)
     case NSData(String)
     case JSON(String) 
 }
-```swift
 extension Dictionary {
     /**
     Loads a JSON file from the app bundle into a new dictionary
